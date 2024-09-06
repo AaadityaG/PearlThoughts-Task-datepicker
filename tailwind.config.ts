@@ -12,6 +12,9 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        suse: ["SUSE", "system-ui", "sans-serif"], // Correct fontFamily definition
+      },
     },
   },
   plugins: [],

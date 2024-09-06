@@ -1,5 +1,6 @@
-// components/MiniCalendar.tsx
 import React, { useState } from 'react';
+import { CircleChevronLeft, CircleChevronRight } from 'lucide-react';
+
 
 interface MiniCalendarProps {
     startDate: Date | null;
@@ -67,9 +68,9 @@ const MiniCalendar: React.FC<MiniCalendarProps> = ({ startDate, endDate, recurre
     return (
         <div className="flex flex-col space-y-4">
             <div className="flex justify-between items-center">
-                <button onClick={handlePrevMonth}>Previous</button>
-                <div>{currentDate.toLocaleString('default', { month: 'long', year: 'numeric' })}</div>
-                <button onClick={handleNextMonth}>Next</button>
+                <button onClick={handlePrevMonth}><CircleChevronLeft className='text-gray-700 hover:text-white' /></button>
+                <div className='font-bold text-2xl'>{currentDate.toLocaleString('default', { month: 'long', year: 'numeric' })}</div>
+                <button onClick={handleNextMonth}><CircleChevronRight className='text-gray-700 hover:text-white' /></button>
             </div>
             <div className="grid grid-cols-7 gap-1 p-2 border border-gray-300 rounded-md">
                 {Array.from({ length: 42 }, (_, index) => {
@@ -80,7 +81,7 @@ const MiniCalendar: React.FC<MiniCalendarProps> = ({ startDate, endDate, recurre
                     return (
                         <div
                             key={index}
-                            className={`w-10 h-10 flex items-center justify-center ${isHighlighted ? 'bg-blue-500 text-white' : 'text-gray-700'}`}
+                            className={`w-10 h-10 flex items-center justify-center ${isHighlighted ? 'bg-blue-500 rounded text-white' : 'text-gray-700'}`}
                         >
                             {date.getDate()}
                         </div>
@@ -89,10 +90,10 @@ const MiniCalendar: React.FC<MiniCalendarProps> = ({ startDate, endDate, recurre
             </div>
             <div className="flex justify-between">
                 <div>
-                    {recurrence === 'daily' && `${getDayCount()} days`}
-                    {recurrence === 'weekly' && `${getDayCount() / 7} weeks`}
-                    {recurrence === 'monthly' && `${getDayCount() / 30} months`}
-                    {recurrence === 'yearly' && `${getYearCount()} years`}
+                    {recurrence === 'daily' && `${Math.floor(getDayCount())} days`}
+                    {recurrence === 'weekly' && `${Math.floor(getDayCount() / 7)} weeks`}
+                    {recurrence === 'monthly' && `${Math.floor(getDayCount() / 30)} months`}
+                    {recurrence === 'yearly' && `${Math.floor(getYearCount())} years`}
                 </div>
                 <div>
                     {startDate?.toLocaleDateString()} - {endDate?.toLocaleDateString()}
