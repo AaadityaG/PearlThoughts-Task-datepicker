@@ -4,13 +4,6 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import RecurringDatePicker from './MyDatePicker';
 
-// Mock the useStore hook
-jest.mock('../store/store', () => ({
-    useStore: jest.fn(() => ({
-        recurrence: 'none',
-        setRecurrence: jest.fn(),
-    })),
-}));
 
 describe('RecurringDatePicker Component', () => {
     // Test to check if the component renders
