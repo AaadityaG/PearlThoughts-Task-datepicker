@@ -15,7 +15,7 @@ const RecurringDatePicker: React.FC = () => {
     };
 
     return (
-        <div className="flex items-center justify-center gap-14 font-[500] ">
+        <div className="flex lg:flex-row md:flex-row flex-col-reverse mt-10 items-center justify-center gap-14 font-[500] ">
             <div className='flex flex-col space-y-4 justify-center items-start'>
             <label className=' '>Select Start Date:</label>
             <DatePicker selected={startDate} dateFormat="dd/MM/yyyy" placeholderText='DD/MM/YYYY' onChange={date => setStartDate(date)} className='w-full text-black p-3 px-6 rounded' />
